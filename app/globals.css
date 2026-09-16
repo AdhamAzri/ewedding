@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+:root {
+  --bg-desktop: #E6F9F0; /* Dark stone for desktop outer area */
+  --bg-card: #FFFDF9;    /* Warm off-white for 412px phone card */
+}
+
+body {
+  background-color: var(--bg-desktop);
+  margin: 0;
+  padding: 0;
+}
