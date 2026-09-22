@@ -15,14 +15,27 @@ export default function Home() {
       <div className="w-full h-full">
         {!isOpen ? (
             /* 1. Landing Cover Page */
-            <LandingPageComponent onOpen={() => setIsOpen(true)} />
+            <section id="hero">
+                <LandingPageComponent onOpen={() => setIsOpen(true)} />
+            </section>
+
         ) : (
             <div className="relative w-full h-screen flex flex-col justify-between overflow-hidden">
               {/* 2. Main Page + Sub Pages in Continuous Smooth Scroll Container */}
               <div className="w-full h-full overflow-y-auto scroll-smooth pb-24 px-4 pt-4">
-                  <MainPageComponent />
-                  <EventDetailsPageComponent/>
-                  <SangMempelaiPageComponent/>
+
+                  <section id="utama">
+                      <MainPageComponent />
+                  </section>
+
+                  <section id="perincian">
+                      <EventDetailsPageComponent/>
+                  </section>
+
+                  <section id="mempelai">
+                      <SangMempelaiPageComponent/>]
+                  </section>
+
               </div>
 
               {/* 3. Navbar visible only after opening */}
