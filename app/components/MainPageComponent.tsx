@@ -89,7 +89,7 @@ export default function MainPageComponent() {
                 <div className="space-y-1">
                     <p lang="ar"
                        dir="rtl"
-                       className="font-quran text-l sm:text-3xl text-[#1A2E22] leading-[2.2] pt-1">
+                       className="font-quran text-l sm:text-xl text-[#1A2E22] leading-[2.2] pt-1">
                         بِسْمِ ٱللّٰهِ ٱلرَّحْمٰنِ ٱلرَّحِيم
                     </p>
                 </div>
@@ -98,11 +98,11 @@ export default function MainPageComponent() {
                     <p
                         lang="ar"
                         dir="rtl"
-                        className="font-quran text-l sm:text-2xl text-[#1A2E22] leading-[2.2] tracking-wide">
+                        className="font-quran text-l sm:text-xl text-[#1A2E22] leading-[2.2] tracking-wide">
                         رَبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَلِمَنْ دَخَلَ بَيْتِيَ مُؤْمِنًا وَلِلْمُؤْمِنِينَ وَالمُؤْمِنَاتِ
                         رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ
                     </p>
-                    <p className="text-[11px] text-stone-600 leading-relaxed px-2">
+                    <p className="text-[16px] text-stone-600 leading-relaxed px-2">
                         Ya Allah, kurniakanlah kepada kami kebaikan di dunia dan kebaikan di akhirat, serta peliharalah kami dari azab neraka.
                     </p>
 
