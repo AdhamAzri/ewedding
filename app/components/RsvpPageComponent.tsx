@@ -1,4 +1,3 @@
-// src/app/components/RsvpComponent.tsx
 'use client'
 
 import { useState } from 'react'
@@ -15,14 +14,11 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
     if (!isOpen) return null
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
-            <div className="bg-white w-full max-w-[380px] rounded-2xl p-6 shadow-2xl relative space-y-4 max-h-[90vh] overflow-y-auto">
+        <div className="modal-overlay">
+            <div className="modal-card">
 
                 {/* Close Button */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 p-1.5 rounded-full text-stone-400 hover:text-stone-600 hover:bg-stone-100 transition-all cursor-pointer"
-                >
+                <button onClick={onClose} className="modal-close-btn">
                     <X size={18} />
                 </button>
 
@@ -48,7 +44,7 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                             <input
                                 type="text"
                                 placeholder="Contoh: Mustaphar Kamal"
-                                className="w-full pl-9 pr-3 py-2.5 bg-[#EBF7F1] text-stone-800 rounded-xl border border-transparent focus:border-[#4A6B58] outline-none transition-all placeholder:text-stone-400"
+                                className="rsvp-field-input"
                             />
                         </div>
                     </div>
@@ -66,10 +62,10 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                                     type="button"
                                     key={option.id}
                                     onClick={() => setAttendance(option.id)}
-                                    className={`py-2 px-1 rounded-xl font-medium transition-all cursor-pointer border text-[11px] ${
+                                    className={`rsvp-option-btn ${
                                         attendance === option.id
-                                            ? 'bg-[#4A6B58] text-white border-[#4A6B58]'
-                                            : 'bg-[#EBF7F1] text-stone-600 border-transparent hover:border-[#4A6B58]/30'
+                                            ? 'rsvp-option-active'
+                                            : 'rsvp-option-inactive'
                                     }`}
                                 >
                                     {option.label}
@@ -83,7 +79,7 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                         <label className="text-stone-600 font-medium">Jumlah Tamu</label>
                         <div className="relative flex items-center">
                             <Users size={16} className="absolute left-3 text-[#4A6B58]" />
-                            <select className="w-full pl-9 pr-3 py-2.5 bg-[#EBF7F1] text-stone-800 rounded-xl border border-transparent focus:border-[#4A6B58] outline-none transition-all appearance-none cursor-pointer">
+                            <select className="rsvp-field-select">
                                 <option>1 Orang</option>
                                 <option>2 Orang (Bersama Pasangan)</option>
                                 <option>3 Orang atau Lebih</option>
@@ -97,7 +93,7 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                         <textarea
                             rows={3}
                             placeholder="Tuliskan ucapan atau catatan kedatangan Anda di sini..."
-                            className="w-full p-3 bg-[#EBF7F1] text-stone-800 rounded-xl border border-transparent focus:border-[#4A6B58] outline-none transition-all placeholder:text-stone-400 resize-none"
+                            className="rsvp-field-textarea"
                         />
                     </div>
 
@@ -105,7 +101,7 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                     <button
                         type="submit"
                         onClick={onClose}
-                        className="w-full py-3 bg-[#4A6B58] hover:bg-[#3D5949] text-white font-medium text-xs rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-[0.99] cursor-pointer pt-2.5"
+                        className="btn-rsvp pt-2.5"
                     >
                         <Send size={14} />
                         Kirim Konfirmasi Kehadiran
