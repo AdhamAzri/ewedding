@@ -1,17 +1,63 @@
 'use client'
 
-import { useState } from 'react'
-import { HeartHandshake, User, Users, Send, X } from 'lucide-react'
+import React, { useState } from 'react'
+import {HeartHandshake, User, Users, Send, X, Loader2} from 'lucide-react'
 
 interface RsvpComponentProps {
     isOpen: boolean
     onClose: () => void
 }
 
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWuiSr6jE2r7RSOsYtHq0JaIh8__rrxkJFC7JmPpqwWj4LtJIYi0GDcvKC4Rm_T4An/exec'
+
 export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
+    const [name, setName] = useState('')
     const [attendance, setAttendance] = useState('Hadir')
+    const [guestCount, setGuestCount] = useState('1 orang')
+    const [message, setMessage] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     if (!isOpen) return null
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+
+        if(!name.trim()){
+            alert('Mohon isi nama lengkap.')
+            return
+        }
+
+        setIsLoading(true)
+
+        try{
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    attendance: attendance,
+                    guestCount: guestCount,
+                    message: message
+                }),
+            })
+
+            alert ('Terima kasih kerana mengisi. Jumpa anda di Majlis!')
+
+            setName('')
+            setAttendance('Hadir')
+            setGuestCount('1 Orang')
+            setMessage('')
+
+            onClose()
+        }catch(error) {
+            console.error('Error submitting  RSVP: ', error)
+            alert('Gagal mengirim konfirmasi.')
+        }finally {
+            setIsLoading(false)
+        }
+    }
 
     return (
         <div className="modal-overlay">
@@ -34,7 +80,7 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                 </div>
 
                 {/* Form */}
-                <form onSubmit={(e) => e.preventDefault()} className="space-y-4 text-xs">
+                <form onSubmit={handleSubmit} className="space-y-4 text-xs">
 
                     {/* Name Input */}
                     <div className="space-y-1">
@@ -43,6 +89,9 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                             <User size={16} className="absolute left-3 text-[#4A6B58]" />
                             <input
                                 type="text"
+                                required
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 placeholder="Contoh: Mustaphar Kamal"
                                 className="rsvp-field-input"
                             />
@@ -79,7 +128,11 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                         <label className="text-stone-600 font-medium">Jumlah Tamu</label>
                         <div className="relative flex items-center">
                             <Users size={16} className="absolute left-3 text-[#4A6B58]" />
-                            <select className="rsvp-field-select">
+                            <select
+                                value={guestCount}
+                                onChange={(e) => setGuestCount(e.target.value)}
+                                className="rsvp-field-select"
+                            >
                                 <option>1 Orang</option>
                                 <option>2 Orang (Bersama Pasangan)</option>
                                 <option>3 Orang atau Lebih</option>
@@ -92,6 +145,8 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                         <label className="text-stone-600 font-medium">Catatan atau Ucapan Singkat</label>
                         <textarea
                             rows={3}
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
                             placeholder="Tuliskan ucapan atau catatan kedatangan Anda di sini..."
                             className="rsvp-field-textarea"
                         />
@@ -100,11 +155,20 @@ export default function RsvpComponent({ isOpen, onClose }: RsvpComponentProps) {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        onClick={onClose}
-                        className="btn-rsvp pt-2.5"
+                        disabled={isLoading}
+                        className="btn-rsvp pt-2.5 flex items-center justify-center gap-2"
                     >
-                        <Send size={14} />
-                        Kirim Konfirmasi Kehadiran
+                        {isLoading ? (
+                            <>
+                                <Loader2 size={14} className="animate-spin" />
+                                Menghantar...
+                            </>
+                        ):(
+                            <>
+                                <Send size={14}/>
+                                Hantar Konfirmasi Kehadiran
+                            </>
+                        )}
                     </button>
                 </form>
 
