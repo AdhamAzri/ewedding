@@ -33,7 +33,7 @@ export default function Home() {
                   </section>
 
                   <section id="mempelai">
-                      <SangMempelaiPageComponent/>]
+                      <SangMempelaiPageComponent/>
                   </section>
 
               </div>
