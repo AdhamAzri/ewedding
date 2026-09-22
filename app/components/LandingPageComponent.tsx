@@ -31,32 +31,31 @@ interface LandingPageComponentProps {
 
 export default function LandingPageComponent({ onOpen }: LandingPageComponentProps) {
     return (
-        <div className="relative min-h-screen w-full max-w-[430px] mx-auto bg-[#FAFAF7] text-[#2C2C2C] flex flex-col justify-between overflow-hidden font-serif border-x border-stone-200 shadow-2xl"
-             onClick={onOpen}>
+        <div className="landing-main" onClick={onOpen}>
 
             {/* GOLD INNER BORDER DECORATION */}
-            <div className="absolute inset-3 border border-[#C5A059]/40 pointer-events-none rounded-xl z-10" />
+            <div className="landing-border" />
 
             {/* FLOATING TOP ACTION BAR */}
-            <div className="relative z-20 px-6 pt-6 flex justify-between items-center">
-                {/* Music Player Capsule */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur-md rounded-full shadow-xs border border-stone-200/60 text-[10px] tracking-wider uppercase text-stone-700">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <Music size={12} className="text-[#9E4A56]" />
-                    <span className="truncate max-w-[140px] font-sans font-medium">CAN'T HELP FALLING IN LOVE</span>
-                </div>
+            {/*<div className="relative z-20 px-6 pt-6 flex justify-between items-center">*/}
+            {/*    /!* Music Player Capsule *!/*/}
+            {/*    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur-md rounded-full shadow-xs border border-stone-200/60 text-[10px] tracking-wider uppercase text-stone-700">*/}
+            {/*        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />*/}
+            {/*        <Music size={12} className="text-[#9E4A56]" />*/}
+            {/*        <span className="truncate max-w-[140px] font-sans font-medium">CAN'T HELP FALLING IN LOVE</span>*/}
+            {/*    </div>*/}
 
-                {/* Share Button */}
-                <button
-                    aria-label="Share invitation"
-                    className="p-2 bg-white/90 backdrop-blur-md rounded-full shadow-xs border border-stone-200/60 text-stone-600 hover:text-stone-900 transition-all cursor-pointer"
-                >
-                    <Share2 size={15} />
-                </button>
-            </div>
+            {/*    /!* Share Button *!/*/}
+            {/*    <button*/}
+            {/*        aria-label="Share invitation"*/}
+            {/*        className="p-2 bg-white/90 backdrop-blur-md rounded-full shadow-xs border border-stone-200/60 text-stone-600 hover:text-stone-900 transition-all cursor-pointer"*/}
+            {/*    >*/}
+            {/*        <Share2 size={15} />*/}
+            {/*    </button>*/}
+            {/*</div>*/}
 
             {/* MAIN CONTENT AREA */}
-            <div className="relative z-20 my-auto py-8 px-6 text-center space-y-6">
+            <div className="main-content">
 
                 {/* WALIMATULURUS HEADER */}
                 <div className="space-y-1">
