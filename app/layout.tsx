@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/app/components/Navbar";
+import { Amiri } from 'next/font/google';
 import React from "react";
+import SprinkleCanvas from "@/app/components/SprinkeComponent";
 
 export const metadata: Metadata = {
   title: "Hakimi & Ilyana | Wedding Invitation",
   description: "Join us in celebrating our wedding day.",
 };
+
+const amiri = Amiri({
+    subsets: ['arabic'],
+    weight: ['400', '700'],
+    variable: '--font-amiri',
+})
 
 export default function RootLayout({
                                      children,
@@ -14,12 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-      <html lang="en" className="h-full">
+      <html lang="en" className="h-full theme-simple amiri.variable">
       {/* Outer Desktop Area Background */}
-          <body className="min-h-screen  flex items-center justify-center m-0 p-0">
+          <body className="body">
 
             {/*Inner 412px Phone Card Background*/}
-              <div className="w-103 max-w-full h-screen relative overflow-hidden  shadow-2xl">
+              <div className="main-div">
+                  <SprinkleCanvas/>
                   {children}
               </div>
           </body>

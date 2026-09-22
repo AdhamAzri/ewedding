@@ -1,12 +1,225 @@
 @import "tailwindcss";
 
 :root {
-  --bg-desktop: #E6F9F0; /* Dark stone for desktop outer area */
-  --bg-card: #FFFDF9;    /* Warm off-white for 412px phone card */
+    --bg-desktop: #FAFAF7;
+    --bg-card: #FFFDF9;
+    --font-amiri: 'Amiri', serif;
 }
 
-body {
-  background-color: var(--bg-desktop);
-  margin: 0;
-  padding: 0;
+.font-quran {
+    font-family: var(--font-amiri), 'Amiri', serif !important;
+}
+
+
+@layer utilities {
+
+    .theme-simple {
+
+        & body {
+            background-color: var(--bg-desktop);
+            margin: 0;
+            padding: 0;
+        }
+
+        & .body {
+            @apply min-h-screen flex items-center justify-center m-0 p-0;
+        }
+
+        & .main-div {
+            @apply w-[412px] max-w-full h-screen relative overflow-hidden shadow-2xl;
+        }
+
+        /*Overlay*/
+        & .sprinkle-overlay {
+            @apply fixed inset-0 pointer-events-none z-30 w-full h-full;
+        }
+
+        /*Quran verse styles*/
+        & .font-quran {
+            font-family: var(--font-amiri), serif;
+        }
+
+        & .quran-card {
+            @apply bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-sm border border-stone-100 text-center space-y-3 my-4;
+        }
+
+        /* Landing Page Utility Classes */
+        & .landing-main {
+            @apply relative min-h-screen w-full max-w-[430px] mx-auto bg-[#FAFAF7] text-[#2C2C2C] flex flex-col justify-between overflow-hidden font-serif border-x border-stone-200 shadow-2xl;
+        }
+
+        & .landing-border {
+            @apply absolute inset-3 border border-[#C5A059]/40 pointer-events-none rounded-xl z-10;
+        }
+
+        & .main-content {
+            @apply relative z-20 my-auto py-8 px-6 text-center space-y-6;
+        }
+
+        /* Main Section & Card Utility Classes */
+        & .main-section {
+            @apply w-full flex flex-col items-center justify-start text-center text-[#1A1A1A] overflow-y-auto pb-18;
+        }
+
+        & .main-card {
+            @apply w-full bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-sm border border-stone-100 text-stone-800 space-y-6 text-center my-2;
+        }
+
+        & .salutation-text {
+            @apply font-serif italic text-xs text-[#8C3A48] tracking-wide;
+        }
+
+        & .section-label {
+            @apply text-stone-500 uppercase tracking-widest text-[10px];
+        }
+
+        & .names-text {
+            @apply font-semibold text-stone-900 tracking-wide;
+        }
+
+        & .invitation-badge {
+            @apply font-serif italic text-xs text-[#4F7A62] bg-[#EBF7F1] py-1.5 px-3 rounded-full inline-block;
+        }
+
+        & .card-divider-line {
+            @apply h-[1px] w-12 bg-stone-200;
+        }
+
+        /* Section Headers & Badges */
+        & .badge-green {
+            @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF7F1] text-[#4F7A62] text-xs font-medium tracking-wide;
+        }
+
+        & .badge-pink {
+            @apply inline-block px-3 py-1 rounded-full bg-[#FDE8E8] text-[#9E4A56] text-xs font-medium;
+        }
+
+        & .section-title {
+            @apply font-serif text-2xl text-[#1A2E22] font-semibold;
+        }
+
+        & .section-description {
+            @apply text-xs text-stone-600 px-4 leading-relaxed;
+        }
+
+        /* Countdown Card */
+        & .countdown-card {
+            @apply bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-sm border border-stone-100 text-center space-y-4;
+        }
+
+        & .countdown-box {
+            @apply bg-[#EBF7F1] rounded-xl p-2.5 flex flex-col items-center;
+        }
+
+        & .countdown-val {
+            @apply text-lg font-bold text-[#8C535D];
+        }
+
+        & .countdown-lbl {
+            @apply text-[10px] text-[#527863] font-medium tracking-wider;
+        }
+
+        /* Event Location Card */
+        & .event-card {
+            @apply bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-sm border border-stone-100 space-y-5;
+        }
+
+        & .icon-wrapper {
+            @apply p-2 rounded-full bg-[#EBF7F1] text-[#4F7A62] shrink-0;
+        }
+
+        & .btn-calendar {
+            @apply w-full py-3 px-4 bg-[#8C535D] hover:bg-[#78444E] text-white font-medium text-xs rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-[0.99] cursor-pointer;
+        }
+
+        & .btn-rsvp {
+            @apply w-full py-3 px-4 bg-[#4A6B58] hover:bg-[#3D5949] text-white font-medium text-xs rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-[0.99] cursor-pointer;
+        }
+
+        /* Navbar Utility Classes */
+        & .navbar-container {
+            @apply bg-white/90 backdrop-blur-md border border-stone-200/80 shadow-xl rounded-full px-4 py-2.5 flex justify-around items-center text-xs text-stone-700 font-medium;
+        }
+
+        & .nav-button {
+            @apply flex flex-col items-center justify-center py-1 px-2 rounded-full transition-all duration-200;
+        }
+
+        & .nav-button-active {
+            @apply text-[#9E3B4D] scale-105;
+        }
+
+        & .nav-button-inactive {
+            @apply text-stone-500 hover:text-stone-800;
+        }
+
+        /* Mempelai Profiles */
+        & .mempelai-card {
+            @apply bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-sm border border-stone-100 text-center space-y-2;
+        }
+
+        & .mempelai-avatar-groom {
+            @apply w-10 h-10 mx-auto rounded-full bg-[#EBF7F1] text-[#4F7A62] flex items-center justify-center font-bold text-sm;
+        }
+
+        & .mempelai-avatar-bride {
+            @apply w-10 h-10 mx-auto rounded-full bg-[#FDE8E8] text-[#9E4A56] flex items-center justify-center font-bold text-sm;
+        }
+
+        /* Guestbook / Notes Utility Classes */
+        & .guestbook-card {
+            @apply bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-sm border border-stone-100 space-y-4;
+        }
+
+        & .chat-bubble {
+            @apply bg-[#EBF7F1]/60 rounded-xl p-3 space-y-1 border border-[#D8F3E5];
+        }
+
+        & .form-input {
+            @apply w-full px-3 py-2 bg-[#EBF7F1] text-xs text-stone-800 rounded-xl outline-none focus:ring-1 focus:ring-[#4F7A62];
+        }
+
+        & .btn-submit-icon {
+            @apply absolute right-2 bottom-2 p-1.5 bg-[#4F7A62] text-white rounded-lg hover:bg-[#3D5949] transition-all cursor-pointer;
+        }
+
+        /* RSVP Modal Utility Classes */
+        & .modal-overlay {
+            @apply fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs;
+        }
+
+        & .modal-card {
+            @apply bg-white w-full max-w-[380px] rounded-2xl p-6 shadow-2xl relative space-y-4 max-h-[90vh] overflow-y-auto;
+        }
+
+        & .modal-close-btn {
+            @apply absolute top-4 right-4 p-1.5 rounded-full text-stone-400 hover:text-stone-600 hover:bg-stone-100 transition-all cursor-pointer;
+        }
+
+        & .rsvp-option-btn {
+            @apply py-2 px-1 rounded-xl font-medium transition-all cursor-pointer border text-[11px];
+        }
+
+        & .rsvp-option-active {
+            @apply bg-[#4A6B58] text-white border-[#4A6B58];
+        }
+
+        & .rsvp-option-inactive {
+            @apply bg-[#EBF7F1] text-stone-600 border-transparent hover:border-[#4A6B58]/30;
+        }
+
+        & .rsvp-field-input {
+            @apply w-full pl-9 pr-3 py-2.5 bg-[#EBF7F1] text-stone-800 rounded-xl border border-transparent focus:border-[#4A6B58] outline-none transition-all placeholder:text-stone-400;
+        }
+
+        & .rsvp-field-select {
+            @apply w-full pl-9 pr-3 py-2.5 bg-[#EBF7F1] text-stone-800 rounded-xl border border-transparent focus:border-[#4A6B58] outline-none transition-all appearance-none cursor-pointer;
+        }
+
+        & .rsvp-field-textarea {
+            @apply w-full p-3 bg-[#EBF7F1] text-stone-800 rounded-xl border border-transparent focus:border-[#4A6B58] outline-none transition-all placeholder:text-stone-400 resize-none;
+        }
+
+    }
+
 }
